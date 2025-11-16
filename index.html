@@ -2,109 +2,64 @@
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Esign Cài Trực Tiếp</title>
 <style>
     body {
-        background: #111;
-        padding: 20px;
-        font-family: Arial;
-    }
-
-    /* Hàng ngang */
-    .row {
-        width: 330px;
-        padding: 12px;
-        background: rgba(255,255,255,0.1);
-        backdrop-filter: blur(14px);
-        border-radius: 18px;
+        background: #0f0f0f;
         display: flex;
+        justify-content: center;
         align-items: center;
-        gap: 12px;
-        margin-bottom: 16px;
+        height: 100vh;
+        margin: 0;
+        font-family: sans-serif;
+    }
+
+    .blur-button {
+        width: 130px;
+        height: 130px;
+        background: rgba(255,255,255,0.12);
+        backdrop-filter: blur(18px);
+        border-radius: 22px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         cursor: pointer;
-        transition: 0.2s;
+        transition: 0.15s;
     }
 
-    .row:hover {
-        transform: scale(1.03);
+    .blur-button:hover {
+        transform: scale(1.05);
     }
 
-    /* ICON */
-    .icon {
-        width: 60px;
-        height: 60px;
-        border-radius: 16px;
-        overflow: hidden;
-        animation: wiggle 2s infinite ease-in-out;
-    }
-
-    .icon img {
-        width: 100%;
-        height: 100%;
+    .icon-img {
+        width: 80px;
+        height: 80px;
+        border-radius: 12px; /* GIỮ ICON VUÔNG NHƯ ESIGN */
         object-fit: cover;
+        margin-bottom: 10px;
     }
 
-    @keyframes wiggle {
-        0% { transform: rotate(0); }
-        50% { transform: rotate(4deg); }
-        100% { transform: rotate(0); }
-    }
-
-    /* HÌNH BLUR */
-    .preview {
-        width: 150px;
-        height: 60px;
-        border-radius: 16px;
-        overflow: hidden;
-    }
-
-    .preview img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        filter: blur(6px) brightness(1.2);
-    }
-
-    /* TEXT */
-    .text {
-        flex: 1;
+    .label {
         color: white;
-        font-size: 17px;
-        font-weight: bold;
+        font-size: 15px;
+        font-weight: 600;
     }
 </style>
 </head>
 <body>
 
-<div class="row" onclick="goto('https://linkbio.co/7111501pQYf74')">
-    <div class="icon"><img src="https://ben.com.vn/tin-tuc/wp-content/uploads/2021/12/anh-che-cho-buon-cuoi-cho-may-tinh-2.jpg"></div>
-    <div class="text">Linkbio Tiểu Sư</div>
-</div>
-</div>
-<div class="row" onclick="goto('https://github.com/qbap/ONEJailbreak-IPAs/raw/main/esign_5.0.2_unsigned.ipa')">
-    <div class="icon"><img src="data:image/jpeg;base64,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"></div>
-    <div class="text">Esign ios ipa</div>
-</div>
-<div class="row" onclick="goto('https://tumadam.io.vn/hackmaplqiosv2.0/aovcheat')">
-    <div class="icon"><img src="https://i.imgur.com/pCGsJMd.jpeg"></div>
-    <div class="text">hack Liên Quân Map Aov</div>
- </div>  
-    <div class="row" onclick="goto('https://tumadam.io.vn/autoup/tiemphoanhhai')">
-    <div class="icon"><img src="https://st.quantrimang.com/photos/image/2025/11/03/Game-Brother-Hai-Pho-Restaurant-200-size-200x200-znd.png"></div>
-    <div class="text">Tiệm Phở Quán Anh hai</div>
-    </div>
+<!-- NÚT BLUR + ICON + NHẤN CHUYỂN LINK -->
+<div class="blur-button" onclick="window.location.href='https://loadly.io/cFh0vBDi'">
+    <!-- ICON PNG (GIỐNG ESIGN) -->
+    <img src="https://ios.codevn.net/wp-content/uploads/2022/09/ESign.png" class="icon-img">
 
-    <div class="row" onclick="goto('https://link4sub.com/2k4g')">
-        <div class="icon"><img src="https://i.imgur.com/pCGsJMd.jpeg"></div>
-    <div class="text">ipa Liên Quân Hack Map ios No key</div>
-    </div>
-       <div class="row" onclick="goto('https://tumadam.io.vn/getkeyaovcheat/')">
-        <div class="icon"><img src="https://www.iconpacks.net/icons/1/free-key-icon-920-thumb.png"></div>
-    <div class="text">Get Key LQ IOS(Hack Map)</div>
-<script>
-function goto(link){
-    window.location.href = link;
-}
-</script>
+    <div class="label">Esign </i> </div>
+</div>
+
+    <!-- CREDIT -->
+    <div style="position: absolute; bottom: 35px; color: rgba(255, 255, 255, 0.168); font-size: 40px; opacity: 0.7;">By Phạm Quang</div>
 
 </body>
 </html>
